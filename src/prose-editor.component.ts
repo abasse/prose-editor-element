@@ -9,6 +9,12 @@ import Placeholder from '@tiptap/extension-placeholder';
 import Underline from '@tiptap/extension-underline';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
+
+import Commands from "./suggestion/commands";
+import getSuggestionItems from "./suggestion/items";
+import renderItems from "./suggestion/renderItems";
+
+
 // @ts-ignore
 import emojiData from '@emoji-mart/data';
 import { Picker } from 'emoji-mart';
@@ -120,6 +126,12 @@ export default class ProseEditor extends LitElement {
       },
       extensions: [
         StarterKit,
+        Commands.configure({
+          suggestion: {
+            items: getSuggestionItems,
+            render: renderItems
+          }
+        }),
         Link,
         Underline,
         Placeholder.configure({
@@ -684,7 +696,7 @@ export default class ProseEditor extends LitElement {
         <slot name="toolbar-end"></slot>
         <slot></slot>
       </div>
-      <slot name="editor"></slot>
+      <slot name="editor" ></slot>
     </div>`;
   }
 }

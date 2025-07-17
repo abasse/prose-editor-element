@@ -18,7 +18,8 @@
     "rootDir": "./src",
     "paths": {
       "~": ["./src"]
-    }
+    },
+    "jsx": "react"
   },
   "include": ["src"],
   "exclude": ["src/**/*.stories.ts", "src/**/*.test.ts"]
